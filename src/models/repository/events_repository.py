@@ -4,7 +4,7 @@ from src.models.entities.events import Events
 from sqlalchemy.exc import IntegrityError, NoResultFound
 
 class EventsRepository:
-  def insert_event(self, eventsInfo: Dict):
+  def insert_event(self, eventsInfo: Dict) -> Dict:
     with db_connection_handler as database:
       try:
         event = Events(
@@ -19,7 +19,7 @@ class EventsRepository:
 
         return eventsInfo
       except IntegrityError:
-        raise Exception('Evento já cadastrado.')
+        raise Exception('Event already registered.')
       except Exception as exception:
         database.session.rollback()
         raise exception
