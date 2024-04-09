@@ -10,5 +10,5 @@ class CheckIns(Base):
   created_at = Column(DateTime, default=func.now())
 
   def __repr__(self):
-    return f"CheckIns [name={self.attendeeId}]"
+    return f"CheckIns [attendeeId={self.attendeeId}]"
 
